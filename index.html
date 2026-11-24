@@ -65,6 +65,7 @@
   button:active{transform:scale(.98)}
   button.secondary{background:#f3f4f6;color:#374151;box-shadow:none;margin-top:8px;font-weight:600}
   button.outline{background:#fff;color:#003da5;border:2px solid #003da5;box-shadow:none;margin-top:8px}
+  .btn-quero-plano{margin:0 0 14px;background:#003da5;box-shadow:0 6px 16px rgba(0,61,165,.3)}
   .seller{display:flex;align-items:center;gap:12px;background:#f9fafb;border:1px solid #f0f0f0;border-radius:16px;padding:12px;margin-top:14px}
   .avatar{width:52px;height:52px;min-width:52px;border-radius:50%;background:#003da5;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:19px;position:relative;overflow:visible}
   .avatar::after{content:"✓";position:absolute;bottom:-2px;right:-2px;width:20px;height:20px;background:#0095F6;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-weight:900}
@@ -208,6 +209,9 @@
       <div class="destaque"><span>Parcela estimada*</span><b id="rParcela">R$ 1.250,00 / mês</b></div>
       <div><span>Sem juros</span><b>✔️ Sem juros</b></div>
     </div>
+
+    <!-- BOTÃO NOVO - ANTES DA PROMOÇÃO -->
+    <button class="btn-quero-plano" onclick="queroEstePlano()">Quero este plano ✅</button>
 
     <div class="promo-area">
       <label class="promo-check">
@@ -510,6 +514,19 @@ function restart(){
   document.querySelector('.opt').classList.add('selected');
   selectTipo('Imóvel', document.querySelector('.opt'));
   next(1);
+}
+// BOTÃO NOVO: QUERO ESTE PLANO - VAI DIRETO PRO WHATSAPP SEM CPF
+function queroEstePlano(){
+  let parcela = getParcela();
+  let adesao = getAdesao();
+  let taxaMensal = getTaxaMensal();
+  let msg;
+  if(tipo === 'Automóvel'){
+    msg = `Olá Lucas! Quero ESTE PLANO - PLANO SEM PROMOÇÃO para ${tipo} de R$ ${valor.toLocaleString('pt-BR')} - Parcela ${getPrazo()}x de R$ ${parcela.toLocaleString('pt-BR',{minimumFractionDigits:2})} | Adesão à vista 2% = R$ ${adesao.toLocaleString('pt-BR',{minimumFractionDigits:2})} | Vim pelo simulador e quero contratar este plano!`;
+  } else {
+    msg = `Olá Lucas! Quero ESTE PLANO - PLANO SEM PROMOÇÃO para ${tipo} de R$ ${valor.toLocaleString('pt-BR')} - Parcela ${getPrazo()}x de R$ ${parcela.toLocaleString('pt-BR',{minimumFractionDigits:2})} - Taxa de administração ${taxaMensal.toLocaleString('pt-BR',{minimumFractionDigits:3})}% a.m. | Adesão à vista 2% = R$ ${adesao.toLocaleString('pt-BR',{minimumFractionDigits:2})} | Vim pelo simulador e quero contratar este plano!`;
+  }
+  window.open(`https://wa.me/5512997229171?text=${encodeURIComponent(msg)}`, '_blank');
 }
 function enviar(){
   const cpf = document.getElementById('cpf').value.trim();

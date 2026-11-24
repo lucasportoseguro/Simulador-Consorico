@@ -43,13 +43,11 @@
   .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
   .chip{border:1px solid #e5e7eb;border-radius:999px;padding:9px 14px;font-size:13px;cursor:pointer;background:#fff;font-weight:600}
   .chip.selected{background:#003da5;color:#fff;border-color:#003da5}
-  /* PRAZO AUTOMÓVEL */
   .prazo-label{font-size:14px;font-weight:700;margin:18px 0 8px}
   .prazo-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
   .prazo-opt{border:2px solid #e5e7eb;border-radius:14px;padding:12px 6px;text-align:center;cursor:pointer;background:#f9fafb;font-size:14px;font-weight:800}
   .prazo-opt span{display:block;font-weight:400;color:#6b7280;font-size:11px;margin-top:2px}
   .prazo-opt.selected{border-color:#003da5;background:#eef4ff;box-shadow:0 4px 12px rgba(0,61,165,.12)}
-  .prazo-opt:nth-child(4),.prazo-opt:nth-child(5){grid-column:span 1}
   .prazo-wrap{display:none}
   .prazo-wrap.show{display:block}
   .result{background:#f0f6ff;border:1px solid #dbeafe;border-radius:16px;padding:16px;margin:14px 0}
@@ -82,12 +80,44 @@
   .porto-opt span{display:block;font-weight:400;color:#6b7280;font-size:11px;margin-top:2px}
   .porto-opt.selected{border-color:#003da5;background:#eef4ff;box-shadow:0 4px 12px rgba(0,61,165,.12)}
   .porto-opt.selected.sim{border-color:#00a550;background:#f0fdf4}
-  .promo-box{display:none;background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:14px;padding:14px;margin:-4px 0 14px;animation:fade .25s ease}
-  .promo-box.show{display:block}
+  .promo-area{background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:16px;padding:14px;margin:0 0 14px}
   .promo-check{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
-  .promo-check input{width:20px;height:20px;min-width:20px;accent-color:#00a550;margin-top:2px;cursor:pointer}
+  .promo-check input{width:22px;height:22px;min-width:22px;accent-color:#00a550;margin-top:1px;cursor:pointer}
   .promo-check b{font-size:14px;color:#14532d;line-height:1.3;display:block}
   .promo-check span{font-size:12px;color:#4d7c5f;line-height:1.4;display:block;margin-top:2px}
+  .cpf-box{display:none;margin-top:12px;animation:fade .25s ease}
+  .cpf-box.show{display:block}
+  .cpf-box label{font-size:12px;font-weight:700;color:#14532d;display:block;margin-bottom:6px}
+  .cpf-box input{margin-bottom:6px;border-color:#86efac;background:#fff}
+  .cpf-box small{font-size:11px;color:#6b7280;line-height:1.4;display:block}
+  .cpf-ok{display:none;background:#dcfce7;border:1px solid #86efac;border-radius:10px;padding:10px;font-size:12px;color:#14532d;line-height:1.4;margin-top:8px}
+  .cpf-ok.show{display:block}
+  .porto-pergunta{display:none;margin-top:14px;background:#fff;border:1.5px solid #bbf7d0;border-radius:14px;padding:14px;animation:fade .25s ease}
+  .porto-pergunta.show{display:block}
+  .porto-pergunta b{font-size:14px;color:#14532d;display:block;margin-bottom:10px}
+  .btn-promo-final{display:none;margin-top:12px}
+  .btn-promo-final.show{display:block}
+  .loading-promo{text-align:center;padding:28px 10px}
+  .rocket{font-size:64px;display:inline-block;animation:rocketFly 1s ease-in-out infinite}
+  @keyframes rocketFly{0%{transform:translateY(0) rotate(-10deg) scale(1)}50%{transform:translateY(-14px) rotate(10deg) scale(1.08)}100%{transform:translateY(0) rotate(-10deg) scale(1)}}
+  .loading-promo b{font-size:18px;display:block;margin-top:10px}
+  .loading-promo span{font-size:13px;color:#6b7280;display:block;margin-top:6px;line-height:1.4}
+  .dots::after{content:"";animation:dots 1s infinite}
+  @keyframes dots{0%{content:""}33%{content:"."}66%{content:".."}100%{content:"..."}}
+  .promo-result{display:none;animation:fade .4s ease}
+  .promo-result.show{display:block}
+  .promo-badge{display:inline-block;background:#ffcc00;color:#111;font-size:11px;font-weight:800;padding:6px 12px;border-radius:999px;letter-spacing:.5px}
+  .promo-result-box{background:linear-gradient(135deg,#003da5,#0056d6);border-radius:16px;padding:18px;color:#fff;margin:14px 0;text-align:center}
+  .promo-result-box small{opacity:.85;font-size:11px;font-weight:700;letter-spacing:1px}
+  .promo-result-box b{font-size:34px;display:block;margin:4px 0 2px}
+  .promo-result-box span{font-size:13px;opacity:.9}
+  .compare{background:#f9fafb;border:1px solid #e5e7eb;border-radius:14px;padding:14px;margin:12px 0}
+  .compare div{display:flex;justify-content:space-between;font-size:14px;padding:7px 0}
+  .compare div b{color:#111}
+  .compare .old{color:#9ca3af;text-decoration:line-through}
+  .compare .new{color:#00a550;font-size:16px}
+  .benefit-box{background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:14px;padding:13px;font-size:13px;line-height:1.5;color:#14532d;margin:12px 0}
+  .benefit-box b{color:#15803d}
 </style>
 </head>
 <body>
@@ -119,8 +149,6 @@
     <div class="progress"><i class="on"></i><i class="on"></i><i></i></div>
     <h2>Qual valor você busca?</h2>
     <p class="sub" id="tipoLabel">Ajuste a barra até o valor do seu imóvel.</p>
-
-    <!-- SELEÇÃO DE PRAZO - SÓ AUTOMÓVEL -->
     <div class="prazo-wrap" id="prazoAutoBox">
       <div class="prazo-label">Em quantos meses você quer pagar?</div>
       <div class="prazo-grid">
@@ -131,10 +159,9 @@
         <div class="prazo-opt" onclick="selectPrazoAuto(120,this)">120 meses<span>R$ 180 - 360 mil</span></div>
       </div>
     </div>
-
     <div class="value-box"><small>VALOR DO CRÉDITO</small><b id="valorTxt">R$ 200.000</b></div>
-    <input type="range" id="valorRange" min="50000" max="800000" step="10000" value="200000" oninput="updateValor(this.value)">
-    <div class="labels"><span id="minLabel">R$ 50 mil</span><span id="maxLabel">R$ 800 mil</span></div>
+    <input type="range" id="valorRange" min="50000" max="1000000" step="10000" value="200000" oninput="updateValor(this.value)">
+    <div class="labels"><span id="minLabel">R$ 50 mil</span><span id="maxLabel">R$ 1 milhão</span></div>
     <div class="chips" id="chips"></div>
     <br><button onclick="next(3)">Ver minha parcela →</button>
     <button class="secondary" onclick="next(1)">← Voltar</button>
@@ -153,28 +180,31 @@
       <div><span>Sem juros</span><b>✔️ Sem juros</b></div>
     </div>
 
-    <div class="vaga-box">⚠️ <b>Vagas limitadas por grupo.</b><br>Preencha abaixo para verificar se ainda tem vaga disponível para o seu valor.</div>
-
-    <input type="text" id="nome" placeholder="Seu nome">
-    <input type="tel" id="whats" placeholder="Seu WhatsApp (DDD + número)">
-
-    <div class="porto-label">Você já é cliente Porto?</div>
-    <div class="porto-grid">
-      <div class="porto-opt sim" id="portoSim" onclick="selectPorto('Sim',this)">✅ Sim, sou cliente<span>Já tenho Porto</span></div>
-      <div class="porto-opt" id="portoNao" onclick="selectPorto('Não',this)">❌ Não sou cliente<span>Quero conhecer</span></div>
-    </div>
-
-    <div class="promo-box" id="promoBox">
+    <div class="promo-area">
       <label class="promo-check">
-        <input type="checkbox" id="checkPromo">
+        <input type="checkbox" id="checkPromo" onchange="togglePromo()">
         <div>
           <b>🎁 Verificar se tenho condição promocional</b>
-          <span>Quero que o Lucas verifique se tenho alguma condição especial por já ser cliente Porto. (Opcional)</span>
+          <span>Marque aqui que o Lucas verifica se você tem alguma condição especial. (Opcional)</span>
         </div>
       </label>
+      <div class="cpf-box" id="cpfBox">
+        <label>Digite seu CPF para verificar a condição:</label>
+        <input type="tel" id="cpf" placeholder="000.000.000-00" maxlength="14" inputmode="numeric" oninput="formataCPF(this)">
+        <small>🔒 Seu CPF é usado só para consultar a condição promocional e não será divulgado.</small>
+        <div class="cpf-ok" id="cpfOk">✅ CPF preenchido! Agora responda abaixo.</div>
+        <div class="porto-pergunta" id="portoPergunta">
+          <b>Você já é cliente Porto?</b>
+          <div class="porto-grid" style="margin-bottom:0">
+            <div class="porto-opt sim" onclick="selectPorto('Sim',this)">✅ Sim, sou cliente<span>Já tenho Porto</span></div>
+            <div class="porto-opt" onclick="selectPorto('Não',this)">❌ Não sou cliente<span>Quero conhecer</span></div>
+          </div>
+        </div>
+        <div class="btn-promo-final" id="btnPromoFinal">
+          <button onclick="enviar()">Verificar disponibilidade da vaga 🔍</button>
+        </div>
+      </div>
     </div>
-
-    <button onclick="enviar()">Verificar disponibilidade da vaga 🔍</button>
 
     <button class="secondary" onclick="next(2)">← Alterar valor</button>
     <button class="outline" onclick="restart()">↺ Voltar e fazer outra simulação</button>
@@ -186,12 +216,36 @@
   </div>
 
   <div class="step" id="step4">
-    <h2>Verificando sua vaga... 🔍</h2>
-    <p class="sub" id="msgVaga">Lucas Fortes vai verificar agora se ainda tem vaga disponível para o seu valor e te chamar no WhatsApp.</p>
-    <div class="vaga-box">✅ <b>Seu pedido foi enviado!</b><br>Fique de olho no WhatsApp, a resposta vem em poucos minutos em horário comercial.</div>
-    <button onclick="falarWhats()">Falar com Lucas no WhatsApp 📲</button>
-    <button class="secondary" onclick="restart()">↺ Voltar e fazer outra simulação</button>
-    <button class="outline" onclick="next(2)">← Alterar valor e simular de novo</button>
+    <div class="loading-promo" id="loadingPromo">
+      <div class="rocket">🚀</div>
+      <b>Verificando sua condição<span class="dots"></span></b>
+      <span>Consultando seu CPF e buscando a melhor condição para você...</span>
+    </div>
+
+    <div class="promo-result" id="promoResult">
+      <span class="promo-badge">🎉 CONDIÇÃO PROMOCIONAL ENCONTRADA</span>
+      <h2 style="margin-top:12px">Você tem condição especial!</h2>
+      <p class="sub" id="msgVaga">Encontramos uma condição exclusiva para o seu CPF.</p>
+
+      <div class="promo-result-box">
+        <small>SEU CRÉDITO - MESMO VALOR</small>
+        <b id="promoCredito">R$ 200.000</b>
+        <span id="promoTipo">Consórcio de Imóvel</span>
+      </div>
+
+      <div class="compare">
+        <div><span>Parcela normal</span><b class="old" id="promoParcelaNormal">R$ 1.250,00</b></div>
+        <div><span>Parcela promocional*</span><b class="new" id="promoParcelaReduzida">R$ 625,00 / mês</b></div>
+        <div><span>Prazo</span><b id="promoPrazo">200 meses</b></div>
+        <div><span>Você economiza por mês</span><b style="color:#00a550" id="promoEconomia">R$ 625,00</b></div>
+      </div>
+
+      <div class="benefit-box">✅ <b>Benefício: Parcelas 50% reduzidas até contemplar!</b><br>Você paga metade da parcela até ser contemplado e receber seu crédito de <b id="promoCredito2">R$ 200.000</b>.<br><br>⚠️ <b>Após contemplar, a sua parcela será recalculada.</b></div>
+
+      <button onclick="falarWhats()">Verificar disponibilidade da vaga 🔍</button>
+      <button class="secondary" onclick="restart()">↺ Voltar e fazer outra simulação</button>
+      <button class="outline" onclick="next(2)">← Alterar valor e simular de novo</button>
+    </div>
   </div>
 </div>
 </div>
@@ -202,11 +256,9 @@
 let tipo = 'Imóvel';
 let valor = 200000;
 let clientePorto = '';
-let nomeAtual = '';
-let whatsAtual = '';
+let cpfAtual = '';
 let prazoAuto = 80;
 
-// CONFIGURAÇÃO AUTOMÓVEL - PRAZO / TAXA / LIMITE CRÉDITO
 const configAuto = {
   50:  { taxa: 0.20, min: 30000,  max: 50000,  padrao: 40000,  chips: [30000,40000,50000] },
   72:  { taxa: 0.20, min: 34000,  max: 65000,  padrao: 50000,  chips: [34000,50000,65000] },
@@ -225,6 +277,7 @@ function taxaAuto(v){ return configAuto[prazoAuto].taxa; }
 function getTaxa(){ return tipo === 'Imóvel' ? taxaImovel(valor) : taxaAuto(valor); }
 function getPrazo(){ return tipo === 'Imóvel' ? 200 : prazoAuto; }
 function getParcela(){ return Math.round((valor * (1 + getTaxa())) / getPrazo() * 100) / 100; }
+function getParcelaReduzida(){ return Math.round(getParcela() * 0.5 * 100) / 100; }
 function getTaxaMensal(){ return getTaxa() / getPrazo() * 100; }
 
 function updateHero(){
@@ -269,14 +322,13 @@ function selectTipo(t, el){
   const prazoBox = document.getElementById('prazoAutoBox');
   if(t==='Imóvel'){
     prazoBox.classList.remove('show');
-    range.min=50000; range.max=800000; range.value=200000; valor=200000;
+    range.min=50000; range.max=1000000; range.value=200000; valor=200000;
     document.getElementById('minLabel').innerText='R$ 50 mil';
-    document.getElementById('maxLabel').innerText='R$ 800 mil';
+    document.getElementById('maxLabel').innerText='R$ 1 milhão';
     document.getElementById('tipoLabel').innerText='Ajuste a barra até o valor do seu imóvel.';
-    renderChips([100000,140000,200000,350000,500000]);
+    renderChips([100000,140000,200000,350000,500000,800000,1000000]);
   } else {
     prazoBox.classList.add('show');
-    // Mantém o prazo já selecionado (padrão 80)
     selectPrazoAuto(prazoAuto, document.querySelector('.prazo-opt.selected'));
     document.getElementById('tipoLabel').innerText='Ajuste a barra até o valor do seu automóvel - ' + prazoAuto + ' meses.';
   }
@@ -287,12 +339,40 @@ function selectPorto(resposta, el){
   clientePorto = resposta;
   document.querySelectorAll('.porto-opt').forEach(o=>o.classList.remove('selected'));
   el.classList.add('selected');
-  const promoBox = document.getElementById('promoBox');
-  if(resposta === 'Sim'){
-    promoBox.classList.add('show');
+  document.getElementById('btnPromoFinal').classList.add('show');
+}
+
+function togglePromo(){
+  const checked = document.getElementById('checkPromo').checked;
+  const box = document.getElementById('cpfBox');
+  if(checked){
+    box.classList.add('show');
+    setTimeout(()=>document.getElementById('cpf').focus(), 100);
   } else {
-    promoBox.classList.remove('show');
-    document.getElementById('checkPromo').checked = false;
+    box.classList.remove('show');
+    document.getElementById('cpf').value = '';
+    document.getElementById('cpfOk').classList.remove('show');
+    document.getElementById('portoPergunta').classList.remove('show');
+    document.getElementById('btnPromoFinal').classList.remove('show');
+    clientePorto = '';
+    document.querySelectorAll('.porto-opt').forEach(o=>o.classList.remove('selected'));
+  }
+}
+function formataCPF(input){
+  let v = input.value.replace(/\D/g,'').slice(0,11);
+  if(v.length > 9) v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/,'$1.$2.$3-$4');
+  else if(v.length > 6) v = v.replace(/(\d{3})(\d{3})(\d{1,3})/,'$1.$2.$3');
+  else if(v.length > 3) v = v.replace(/(\d{3})(\d{1,3})/,'$1.$2');
+  input.value = v;
+  if(v.length === 14){
+    document.getElementById('cpfOk').classList.add('show');
+    document.getElementById('portoPergunta').classList.add('show');
+  } else {
+    document.getElementById('cpfOk').classList.remove('show');
+    document.getElementById('portoPergunta').classList.remove('show');
+    document.getElementById('btnPromoFinal').classList.remove('show');
+    clientePorto = '';
+    document.querySelectorAll('.porto-opt').forEach(o=>o.classList.remove('selected'));
   }
 }
 
@@ -318,7 +398,6 @@ function next(n){
     document.getElementById('rCredito').innerText = 'R$ ' + valor.toLocaleString('pt-BR');
     document.getElementById('rParcela').innerText = 'R$ ' + parcela.toLocaleString('pt-BR',{minimumFractionDigits:2}) + ' / mês';
     document.getElementById('rPrazo').innerText = prazo + ' meses';
-    // AUTOMÓVEL NÃO EXIBE TAXA
     const taxaRow = document.getElementById('rTaxaRow');
     if(tipo === 'Automóvel'){
       taxaRow.style.display = 'none';
@@ -332,12 +411,17 @@ function next(n){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function restart(){
-  document.getElementById('nome').value = '';
-  document.getElementById('whats').value = '';
-  clientePorto = '';
-  document.querySelectorAll('.porto-opt').forEach(o=>o.classList.remove('selected'));
-  document.getElementById('promoBox').classList.remove('show');
+  document.getElementById('cpf').value = '';
   document.getElementById('checkPromo').checked = false;
+  document.getElementById('cpfBox').classList.remove('show');
+  document.getElementById('cpfOk').classList.remove('show');
+  document.getElementById('portoPergunta').classList.remove('show');
+  document.getElementById('btnPromoFinal').classList.remove('show');
+  document.getElementById('loadingPromo').style.display = 'block';
+  document.getElementById('promoResult').classList.remove('show');
+  clientePorto = '';
+  cpfAtual = '';
+  document.querySelectorAll('.porto-opt').forEach(o=>o.classList.remove('selected'));
   tipo = 'Imóvel';
   prazoAuto = 80;
   document.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));
@@ -346,31 +430,44 @@ function restart(){
   next(1);
 }
 function enviar(){
-  const nome = document.getElementById('nome').value.trim();
-  const whats = document.getElementById('whats').value.trim();
-  if(!nome || !whats){ alert('Preencha nome e WhatsApp para verificar a vaga'); return; }
+  const cpf = document.getElementById('cpf').value.trim();
+  if(!document.getElementById('checkPromo').checked){ alert('Marque a opção de verificar condição promocional'); return; }
+  if(cpf.length !== 14){ alert('Digite seu CPF completo para verificar a condição promocional'); document.getElementById('cpf').focus(); return; }
   if(!clientePorto){ alert('Selecione se você já é cliente Porto ou não'); return; }
-  nomeAtual = nome; whatsAtual = whats;
+  cpfAtual = cpf;
   let parcela = getParcela();
-  let taxaMensal = getTaxaMensal();
-  const querPromo = document.getElementById('checkPromo').checked;
-  const textoPromo = querPromo ? 'SIM - Verificar condição promocional' : 'Não marcou';
-  document.getElementById('msgVaga').innerText = `${nome}, vou verificar agora se ainda tem vaga disponível para Consórcio de ${tipo} de R$ ${valor.toLocaleString('pt-BR')} - ${getPrazo()}x de R$ ${parcela.toLocaleString('pt-BR',{minimumFractionDigits:2})}.`;
-  // MENSAGEM SEM TAXA PARA AUTOMÓVEL
-  let msg;
-  if(tipo === 'Automóvel'){
-    msg = `Olá Lucas! Sou ${nome}. Quero VERIFICAR DISPONIBILIDADE DA VAGA para Consórcio Porto Seguro de ${tipo} no valor de R$ ${valor.toLocaleString('pt-BR')}. Parcela ${getPrazo()}x de R$ ${parcela.toLocaleString('pt-BR',{minimumFractionDigits:2})} | Já é cliente Porto? ${clientePorto} | Verificar condição promocional? ${textoPromo} | Meu WhatsApp: ${whats}`;
-  } else {
-    msg = `Olá Lucas! Sou ${nome}. Quero VERIFICAR DISPONIBILIDADE DA VAGA para Consórcio Porto Seguro de ${tipo} no valor de R$ ${valor.toLocaleString('pt-BR')}. Parcela ${getPrazo()}x de R$ ${parcela.toLocaleString('pt-BR',{minimumFractionDigits:2})} - Taxa mensal ${taxaMensal.toLocaleString('pt-BR',{minimumFractionDigits:3})}% a.m. | Já é cliente Porto? ${clientePorto} | Verificar condição promocional? ${textoPromo} | Meu WhatsApp: ${whats}`;
-  }
-  window.open(`https://wa.me/5512997229171?text=${encodeURIComponent(msg)}`, '_blank');
+  let parcelaReduzida = getParcelaReduzida();
+  let economia = parcela - parcelaReduzida;
+  document.getElementById('promoCredito').innerText = 'R$ ' + valor.toLocaleString('pt-BR');
+  document.getElementById('promoCredito2').innerText = 'R$ ' + valor.toLocaleString('pt-BR');
+  document.getElementById('promoTipo').innerText = 'Consórcio de ' + tipo + ' • ' + getPrazo() + ' meses';
+  document.getElementById('promoParcelaNormal').innerText = 'R$ ' + parcela.toLocaleString('pt-BR',{minimumFractionDigits:2});
+  document.getElementById('promoParcelaReduzida').innerText = 'R$ ' + parcelaReduzida.toLocaleString('pt-BR',{minimumFractionDigits:2}) + ' / mês';
+  document.getElementById('promoPrazo').innerText = getPrazo() + ' meses';
+  document.getElementById('promoEconomia').innerText = 'R$ ' + economia.toLocaleString('pt-BR',{minimumFractionDigits:2});
+  document.getElementById('msgVaga').innerText = `Encontramos uma condição exclusiva para o seu CPF - ${tipo} de R$ ${valor.toLocaleString('pt-BR')}.`;
+  document.getElementById('loadingPromo').style.display = 'block';
+  document.getElementById('promoResult').classList.remove('show');
   next(4);
+  setTimeout(()=>{
+    document.getElementById('loadingPromo').style.display = 'none';
+    document.getElementById('promoResult').classList.add('show');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }, 2500);
 }
 function falarWhats(){
-  const msg = nomeAtual ? `Olá Lucas! Sou ${nomeAtual}, acabei de verificar a vaga de ${tipo} de R$ ${valor.toLocaleString('pt-BR')}.` : `Olá Lucas! Vim pelo simulador de Consórcio Porto Seguro.`;
+  let parcela = getParcela();
+  let parcelaReduzida = getParcelaReduzida();
+  let taxaMensal = getTaxaMensal();
+  let msg;
+  if(tipo === 'Automóvel'){
+    msg = `Olá Lucas! Vi minha CONDIÇÃO PROMOCIONAL e quero VERIFICAR DISPONIBILIDADE DA VAGA para ${tipo} de R$ ${valor.toLocaleString('pt-BR')} - Parcela promocional ${getPrazo()}x de R$ ${parcelaReduzida.toLocaleString('pt-BR',{minimumFractionDigits:2})} (50% reduzida até contemplar - Após contemplar, a parcela será recalculada) - Parcela normal R$ ${parcela.toLocaleString('pt-BR',{minimumFractionDigits:2})} | CPF: ${cpfAtual} | Já é cliente Porto? ${clientePorto}`;
+  } else {
+    msg = `Olá Lucas! Vi minha CONDIÇÃO PROMOCIONAL e quero VERIFICAR DISPONIBILIDADE DA VAGA para ${tipo} de R$ ${valor.toLocaleString('pt-BR')} - Parcela promocional ${getPrazo()}x de R$ ${parcelaReduzida.toLocaleString('pt-BR',{minimumFractionDigits:2})} (50% reduzida até contemplar - Após contemplar, a parcela será recalculada) - Parcela normal R$ ${parcela.toLocaleString('pt-BR',{minimumFractionDigits:2})} - Taxa ${taxaMensal.toLocaleString('pt-BR',{minimumFractionDigits:3})}% a.m. | CPF: ${cpfAtual} | Já é cliente Porto? ${clientePorto}`;
+  }
   window.open(`https://wa.me/5512997229171?text=${encodeURIComponent(msg)}`, '_blank');
 }
-renderChips([100000,140000,200000,350000,500000]);
+renderChips([100000,140000,200000,350000,500000,800000,1000000]);
 updateHero();
 updateValor(200000);
 </script>
